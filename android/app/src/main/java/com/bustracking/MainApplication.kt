@@ -1,4 +1,4 @@
-package com.bustracking
+package com.hichem
 
 import android.app.Application
 import com.facebook.react.PackageList
