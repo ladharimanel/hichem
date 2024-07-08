@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react'
-import { Text, View, Image, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import { Text, View, Image, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import CheckBox from '@react-native-community/checkbox';
@@ -10,7 +10,7 @@ const Login = ({ navigation }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isSelected, setSelection] = useState(false);
+    const [toggleCheckBox, setToggleCheckBox] = useState(false)
 
 
     const toggleSecureEntry = () => {
@@ -65,7 +65,17 @@ const Login = ({ navigation }) => {
                             color='grey' />
                     </TouchableOpacity>
                 </View>
-                
+
+                <View style={styles.check}>
+                    <CheckBox
+                        disabled={false}
+                        value={toggleCheckBox}
+                        onValueChange={(newValue) => setToggleCheckBox(newValue)}
+                    />
+                    <Text style={styles.label}>I would like to receive your newsletter and 
+                    other promotional information.</Text>
+                </View>
+
                 <TouchableOpacity onPress={handleSignUp} style={styles.loginButton}>
                     <Text style={styles.log}>Sign Up</Text>
                 </TouchableOpacity>
@@ -145,6 +155,16 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         marginTop: 15,
+    },
+
+    check: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        margin: 5.5,
+        marginTop: 9,
+    },
+    label: {
+        marginLeft: 8, 
     },
 
 });
